@@ -6,5 +6,3 @@ See: https://rapidapi.com/manwilbahaa/api/yahoo-finance127
 
 
 Coordinating on: https://discord.gg/d7GfSdkh
-
-testing app password change 
