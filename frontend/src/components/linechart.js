@@ -26,7 +26,7 @@ export const MyResponsiveLine = ({ data /* see data tab */ }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "transportation",
+      legend: "Date",
       legendOffset: 36,
       legendPosition: "middle",
     }}
@@ -34,7 +34,7 @@ export const MyResponsiveLine = ({ data /* see data tab */ }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "count",
+      legend: "Price",
       legendOffset: -40,
       legendPosition: "middle",
     }}
