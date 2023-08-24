@@ -4,6 +4,7 @@ import axios from "axios";
 
 import PortfolioPerformance from "./components/portfolio.js";
 
+// new branch test
 function App() {
   const testBuyStock = async () => {
     try {
