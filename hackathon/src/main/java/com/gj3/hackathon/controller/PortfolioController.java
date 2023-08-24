@@ -18,8 +18,8 @@ import java.net.URL;
 @CrossOrigin // allows requests from all domains
 
 public class PortfolioController {
-    @Autowired
-    public PortfolioService stockService;
+//    @Autowired
+//    public PortfolioService stockService;
 
 
     @PostMapping("/buystock")

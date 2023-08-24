@@ -1,23 +1,30 @@
-import logo from "./logo.svg";
+import { Button } from "@chakra-ui/react";
 import "./App.css";
+import axios from "axios";
+
+import PortfolioPerformance from "./components/portfolio.js";
 
 function App() {
+  const testBuyStock = async () => {
+    try {
+      // const url = http://localhost:8080/api/v1/stock/buy?symbol=AMZN&shares=1;
+      const data = {
+        symbol: "AMZN",
+        shares: 1,
+      };
+      const url = "http://localhost:8080/api/portfolio/buystock";
+      const response = await axios.post(url, data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React !!
-        </a>
-      </header>
+      <PortfolioPerformance />
+      <Button colorScheme="blue" onClick={testBuyStock}>
+        testBuyStock
+      </Button>
     </div>
   );
 }
