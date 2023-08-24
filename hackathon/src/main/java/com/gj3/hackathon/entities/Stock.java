@@ -7,6 +7,15 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="Stocks")
 public class Stock {
+    public Stock(int id, double price, String ticker) {
+        this.id = id;
+        this.price = price;
+        this.ticker = ticker;
+    }
+
+    public Stock() {
+    }
+
     public int getId() {
         return id;
     }
