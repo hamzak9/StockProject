@@ -1,6 +1,9 @@
 package com.gj3.hackathon.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
+
+
 @Entity
 @Table(name="Stocks")
 public class Stock {
