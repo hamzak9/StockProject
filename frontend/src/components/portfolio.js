@@ -1,12 +1,12 @@
 import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+
 import { MyResponsiveLine } from "./linechart";
 // const baseURL = "http://localhost:8080/api/compactdiscs";
 
 export default function PortfolioPerformance() {
   // const [portfolio, setPortfolio] = useState(null);
-  // const [error, setError] = useState(null);
   const data = [
     {
       id: "APPL",
