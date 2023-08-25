@@ -59,15 +59,36 @@ export const StockCard = ({ stockTicker, interval }) => {
       };
 
       try {
-        const response = await axios.get(
-          `http://localhost:8080/api/stockInfo/history/${stockTicker}/${interval}`
-        );
+        // const response = await axios.get(
+        //   `http://localhost:8080/api/stockInfo/history/${stockTicker}/${interval}`
+        // );
+
+        const response = {
+          data: {
+            symbol: stockTicker,
+            regularMarketPrice: 30,
+            exchangeName: "Nasdaq",
+            currency: "CAD",
+            prices: [
+              {
+                date: "01-05-2021",
+                close: 25,
+              },
+              {
+                date: "02-08-2023",
+                close: 75,
+              },
+              {
+                date: "03-08-2025",
+                close: 500,
+              },
+            ],
+          },
+        };
 
         const lineChartData = convertStockPricesToLineChart(
           response.data["prices"]
         );
-
-        console.log(lineChartData);
 
         const result = {
           symbol: response.data["symbol"],
@@ -76,9 +97,6 @@ export const StockCard = ({ stockTicker, interval }) => {
           currency: response.data["currency"],
           prices: lineChartData,
         };
-
-        console.log(result);
-
         setStockData(result);
       } catch (error) {
         console.log(error);
@@ -88,14 +106,14 @@ export const StockCard = ({ stockTicker, interval }) => {
   }, [stockTicker, interval]);
 
   return (
-    <Card maxW="100%">
+    <Card size={"xl"}>
       <CardHeader>
         <Heading size="md">{stockData["symbol"]}</Heading>
         <Heading size="md">{stockData["regularMarketPrice"]}</Heading>
         <Text>{stockData["exchangeName"]}</Text>
       </CardHeader>
       <CardBody>
-        <Box w="100%" h="640">
+        <Box w="100%" h="500">
           <MyResponsiveLine data={stockData["prices"]} />
         </Box>
       </CardBody>
