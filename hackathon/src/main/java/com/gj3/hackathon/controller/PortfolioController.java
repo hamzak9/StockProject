@@ -34,25 +34,20 @@ public class PortfolioController {
 
     @PostMapping("/buystock")
     public ResponseEntity<?> buyStock(@RequestBody String payload) throws IOException, InterruptedException {
-
-        System.out.println("YOU ARE HERE");
-        System.out.println(payload);
-
         JSONObject json = new JSONObject(payload);
+
         String ticker = json.getString("symbol");
-        int quantity = Integer.parseInt(json.getString("shares"));
-
-
+        Integer quantity = json.getInt("shares");
 
         String information = getStockInfo(ticker);
 
-        return new ResponseEntity<>(information,HttpStatus.OK);
+        return new ResponseEntity<>(information, HttpStatus.OK);
     }
 
     public String getStockInfo(String ticker) throws IOException, InterruptedException {
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://yh-finance-complete.p.rapidapi.com/yhprice?ticker="+ticker))
+                .uri(URI.create("https://yh-finance-complete.p.rapidapi.com/yhprice?ticker=" + ticker))
                 .header("X-RapidAPI-Key", "7e6cd971e1mshe5b173d8932bb0bp1f848ejsn01fd4ecc35f7")
                 .header("X-RapidAPI-Host", "yh-finance-complete.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
@@ -62,6 +57,7 @@ public class PortfolioController {
         return response.body();
 
     }
+
     @PostMapping("/sellstock")
     public ResponseEntity<?> sellStock(@RequestBody String payload) {
 
