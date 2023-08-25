@@ -4,6 +4,13 @@ import axios from "axios";
 
 import PortfolioPerformance from "./components/portfolio.js";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/layout/Header";
+import ListStocks from "./components/portfolio/ListStocks";
+import UserBalance from "./components/portfolio/UserBalance";
+import SearchBox from "./components/layout/SearchBox";
+import OrderHistory from "./components/portfolio/OrderHistory";
+
 // new branch test
 function App() {
   const testBuyStock = async () => {
@@ -21,11 +28,15 @@ function App() {
     }
   };
   return (
-    <div className="App">
-      <PortfolioPerformance />
-      <Button colorScheme="blue" onClick={testBuyStock}>
-        testBuyStock
-      </Button>
+    <div className="back">
+      <Header />
+      <UserBalance />
+      <ListStocks />
+      <SearchBox />
+      <section id="temp">
+        <PortfolioPerformance />
+      </section>
+      <OrderHistory />
     </div>
   );
 }
