@@ -1,7 +1,8 @@
 import "./App.css";
-import { Flex } from "@chakra-ui/react";
 
 import PortfolioPerformance from "./components/portfolio.js";
+import { StockTabs } from "./components/stockTabs";
+import { Flex } from "@chakra-ui/react";
 import { StockOrderButton } from "./components/stockOrderButton";
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           operationName={"Sell Stocks"}
         />
       </Flex>
+      <StockTabs />
     </div>
   );
 }
