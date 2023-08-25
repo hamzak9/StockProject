@@ -1,8 +1,8 @@
 .order {
   background-color: rgb(75, 74, 74);
   border-radius: 1rem;
-  width: 30%;
-  height: 30rem;
+  width: 55%;
+  height: 25rem;
   padding: 1rem;
   margin: 1rem;
   overflow: auto;
@@ -20,7 +20,8 @@
   width: 100%;
   border-collapse: collapse;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: scroll;
+  text-align: center;
 }
 
 .order th {

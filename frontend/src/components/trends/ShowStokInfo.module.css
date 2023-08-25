@@ -1,0 +1,14 @@
+.stockinfo {
+  background-color: rgb(75, 74, 74);
+  width: 57%;
+  height: 18rem;
+  border-radius: 1rem;
+  overflow: scroll;
+  padding: 1rem;
+  margin: 1.5rem;
+}
+
+.stockinfo h3 {
+  color: white;
+  text-align: center;
+}

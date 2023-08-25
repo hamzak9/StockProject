@@ -10,6 +10,7 @@ import ListStocks from "./components/portfolio/ListStocks";
 import UserBalance from "./components/portfolio/UserBalance";
 import SearchBox from "./components/layout/SearchBox";
 import OrderHistory from "./components/portfolio/OrderHistory";
+import ShowStockInfo from "./components/trends/ShowStockInfo";
 
 // new branch test
 function App() {
@@ -33,10 +34,11 @@ function App() {
       <UserBalance />
       <ListStocks />
       <SearchBox />
+      <ShowStockInfo />
+      <OrderHistory />
       <section id="temp">
         <PortfolioPerformance />
       </section>
-      <OrderHistory />
     </div>
   );
 }
