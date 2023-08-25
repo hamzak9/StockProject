@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 
 @Controller
-@RequestMapping("/api/portfolio")
+@RequestMapping("/api/stock")
 @CrossOrigin // allows requests from all domains
 
 public class StockController {
