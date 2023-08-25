@@ -60,7 +60,12 @@ public class PortfolioController {
 
     @PostMapping("/sellstock")
     public ResponseEntity<?> sellStock(@RequestBody String payload) {
+        JSONObject json = new JSONObject(payload);
 
+        String ticker = json.getString("symbol");
+        Integer quantity = json.getInt("shares");
+
+        System.out.println(ticker + " " + quantity);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
