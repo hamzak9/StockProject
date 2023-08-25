@@ -42,9 +42,7 @@ public class StockInfoController {
         stockInfo.put("symbol", meta.getString("symbol"));
         stockInfo.put("exchangeName", meta.getString("exchangeName"));
         stockInfo.put("regularMarketPrice", meta.getDouble("regularMarketPrice"));
-
-//        stockInfo.put("prices", new HashMap<String, Double>());
-
+        
         ArrayList<Object> prices = new ArrayList<>();
         stockInfo.put("prices", prices);
 
