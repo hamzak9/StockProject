@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <PortfolioPerformance />
 
-      <StockCard stockTicker="AMZN" interval={"1d"} />
+      <StockCard stockTicker="AMZN" interval={"3mo"} />
     </div>
   );
 }
