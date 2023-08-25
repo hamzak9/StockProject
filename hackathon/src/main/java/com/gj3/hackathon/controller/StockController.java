@@ -1,9 +1,5 @@
 package com.gj3.hackathon.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.gj3.hackathon.services.PortfolioService;
-import org.apache.tomcat.util.json.JSONParser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,17 +9,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Map;
+import java.util.Arrays;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 
 
 @Controller
@@ -65,6 +59,54 @@ public class StockController {
         String[] tickerInfo = {symbol, regularMarketPrice, regularMarketOpen, marketCap, averageAnalystRating};
 
         return tickerInfo;
+
+    }
+
+    @PostMapping("/gettrend")
+    public ResponseEntity<?> getTrend(@RequestBody String payload) throws IOException, InterruptedException { 
+
+        JSONObject json = new JSONObject(payload);
+        String ticker = json.getString("symbol");
+
+        JSONArray information = getTrendInformation(ticker);
+
+        return new ResponseEntity<>(information,HttpStatus.OK);
+
+    }
+
+    public JSONArray getTrendInformation(String ticker) throws IOException, InterruptedException { 
+
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create("https://yahoo-finance127.p.rapidapi.com/earnings-trend/"+ticker))
+            .header("X-RapidAPI-Key", "53555d6a01mshd60267e4c4c87d0p16910cjsnffc2c3c37aa2")
+            .header("X-RapidAPI-Host", "yahoo-finance127.p.rapidapi.com")
+            .method("GET", HttpRequest.BodyPublishers.noBody())
+            .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        JSONObject jsonObject = new JSONObject(response.body());
+
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            JSONObject earningsTrend = jsonObject.getJSONObject("epsTrend");
+
+            // Create an array to store the values
+            double[] dataArray = new double[5];
+
+            // Extract the values and populate the array
+            dataArray[0] = earningsTrend.getJSONObject("current").getDouble("raw");
+            dataArray[1] = earningsTrend.getJSONObject("7daysAgo").getDouble("raw");
+            dataArray[2] = earningsTrend.getJSONObject("30daysAgo").getDouble("raw");
+            dataArray[3] = earningsTrend.getJSONObject("60daysAgo").getDouble("raw");
+            dataArray[4] = earningsTrend.getJSONObject("90daysAgo").getDouble("raw");
+            
+            jsonArray = new JSONArray(Arrays.asList(dataArray));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonArray;
 
     }
     
