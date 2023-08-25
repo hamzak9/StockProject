@@ -90,7 +90,7 @@ export default function PortfolioPerformance() {
           <Text fontSize="5xl">$1000.00</Text>
         </Box>
       </Flex>
-      <Box w="620" h="640">
+      <Box maxW='100%' h="xl">
         <MyResponsiveLine data={data} />
       </Box>
     </Box>
