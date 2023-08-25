@@ -13,6 +13,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
@@ -42,16 +43,21 @@ public class StockInfoController {
         stockInfo.put("exchangeName", meta.getString("exchangeName"));
         stockInfo.put("regularMarketPrice", meta.getDouble("regularMarketPrice"));
 
-        stockInfo.put("prices", new HashMap<String, Double>());
-        HashMap<String, Double> prices = (HashMap<String, Double>) stockInfo.get("prices");
+//        stockInfo.put("prices", new HashMap<String, Double>());
+
+        ArrayList<Object> prices = new ArrayList<>();
+        stockInfo.put("prices", prices);
 
         JSONObject items = jsonObject.getJSONObject("items");
 
         items.keySet().forEach(item -> {
             JSONObject infoAtTime = items.getJSONObject(item);
-            prices.put(infoAtTime.getString("date"), infoAtTime.getDouble("close"));
+            HashMap<String, String> datePriceMapping = new HashMap<>();
+            datePriceMapping.put("date", infoAtTime.getString("date"));
+            datePriceMapping.put("close", Double.toString(infoAtTime.getDouble("close")));
+            prices.add(datePriceMapping);
         });
-
+        System.out.println(stockInfo);
         return new ResponseEntity<>(stockInfo, HttpStatus.OK);
     }
 }
