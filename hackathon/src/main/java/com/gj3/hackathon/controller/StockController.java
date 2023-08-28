@@ -45,7 +45,7 @@ public class StockController {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://yahoo-finance127.p.rapidapi.com/key-statistics/"+ticker))
-            .header("X-RapidAPI-Key", yahooAPIKey)
+            .header("X-RapidAPI-Key", "53555d6a01mshd60267e4c4c87d0p16910cjsnffc2c3c37aa2")
             .header("X-RapidAPI-Host", "yahoo-finance127.p.rapidapi.com")
             .method("GET", HttpRequest.BodyPublishers.noBody())
             .build();
@@ -78,7 +78,7 @@ public class StockController {
 
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create("https://yahoo-finance127.p.rapidapi.com/earnings-trend/"+ticker))
-            .header("X-RapidAPI-Key", yahooAPIKey)
+            .header("X-RapidAPI-Key", "53555d6a01mshd60267e4c4c87d0p16910cjsnffc2c3c37aa2")
             .header("X-RapidAPI-Host", "yahoo-finance127.p.rapidapi.com")
             .method("GET", HttpRequest.BodyPublishers.noBody())
             .build();
