@@ -1,12 +1,10 @@
 .has-search {
-  width: auto;
+  width: 30%;
   margin: 50px auto;
   display: flex;
   margin: 1%;
   padding: 1%;
-}
-
-.has-search .form-control {
+  float: left;
 }
 
 .has-search .form-control-feedback {

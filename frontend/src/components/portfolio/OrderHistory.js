@@ -76,7 +76,7 @@ const orders = [
 const OrderHistory = () => {
   return (
     <div className={classes.order}>
-      <p>Recent Order History</p>
+      <p>Stock Order History</p>
       <div>
         <table>
           <thead>
@@ -94,7 +94,7 @@ const OrderHistory = () => {
               <td>AAPL</td>
               <td>$123</td>
               <td>6</td>
-              <td>Buy</td>
+              <td>Sell</td>
               <td>2022-05-01T10:44:39.369Z</td>
             </tr>
             <tr>
@@ -109,7 +109,7 @@ const OrderHistory = () => {
               <td>AAPL</td>
               <td>$123</td>
               <td>6</td>
-              <td>Buy</td>
+              <td>Sell</td>
 
               <td>2022-05-01T10:44:39.369Z</td>
             </tr>

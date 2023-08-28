@@ -11,6 +11,8 @@ import UserBalance from "./components/portfolio/UserBalance";
 import SearchBox from "./components/layout/SearchBox";
 import OrderHistory from "./components/portfolio/OrderHistory";
 import ShowStockInfo from "./components/trends/ShowStockInfo";
+import BuySellButton from "./components/layout/BuySellButton";
+import CashHistory from "./components/portfolio/CashHistory";
 
 // new branch test
 function App() {
@@ -33,12 +35,14 @@ function App() {
       <Header />
       <UserBalance />
       <ListStocks />
-      <SearchBox />
+      <div>
+        <SearchBox /> <BuySellButton />
+      </div>
       <ShowStockInfo />
-      <OrderHistory />
-      <section id="temp">
-        <PortfolioPerformance />
-      </section>
+      <div>
+        <OrderHistory /> <CashHistory />
+      </div>
+      <section id="temp"></section>
     </div>
   );
 }

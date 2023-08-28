@@ -1,18 +1,19 @@
-.order {
+.cashorder {
   background-color: rgb(75, 74, 74);
   border-radius: 1rem;
-  width: 32%;
+  width: 25%;
   height: 26rem;
   padding: 1rem;
+  margin: 1rem;
   overflow: auto;
-  float: right;
+  float: auto;
 }
-.order p {
+.cashorder p {
   text-align: center;
   color: white;
 }
 
-.order table {
+.cashorder table {
   border: 1px #a39485 solid;
   font-size: 0.9em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
@@ -23,27 +24,27 @@
   text-align: center;
 }
 
-.order th {
+.cashorder th {
   text-align: center;
 }
 
-.order thead {
+.cashorder thead {
   font-weight: bold;
   color: #fff;
   background: darkgray;
 }
 
-.order td,
-.order th {
+.cashorder td,
+.cashorder th {
   padding: 1em 0.5em;
   vertical-align: middle;
 }
 
-.order td {
+.cashorder td {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background: #fff;
 }
 
-.order a {
+.cashorder a {
   color: darkgray;
 }
