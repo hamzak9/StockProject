@@ -5,6 +5,7 @@ import {
   Heading,
   Text,
   Box,
+  Container,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -36,6 +37,13 @@ export const StockCard = ({ stockTicker, interval }) => {
         ],
       },
     ],
+    trend: {
+      current: 1.29,
+      "60daysAgo": 1.36,
+      "90daysAgo": 1.36,
+      "30daysAgo": 1.36,
+      "7daysAgo": 1.39,
+    },
   });
 
   useEffect(() => {
@@ -57,10 +65,9 @@ export const StockCard = ({ stockTicker, interval }) => {
           },
         ];
       };
-
       try {
         // const response = await axios.get(
-        //   `http://localhost:8080/api/stockInfo/history/${stockTicker}/${interval}`
+        //   `http://localhost:8080/api/stock/history/${stockTicker}/${interval}`
         // );
 
         const response = {
@@ -90,12 +97,17 @@ export const StockCard = ({ stockTicker, interval }) => {
           response.data["prices"]
         );
 
+        const trendResponse = await axios.get(
+          `http://localhost:8080/api/stock/gettrend/${stockTicker}`
+        );
+
         const result = {
           symbol: response.data["symbol"],
           regularMarketPrice: response.data["regularMarketPrice"],
           exchangeName: response.data["exchangeName"],
           currency: response.data["currency"],
           prices: lineChartData,
+          trend: trendResponse.data["earningsTrend"],
         };
         setStockData(result);
       } catch (error) {
@@ -113,6 +125,20 @@ export const StockCard = ({ stockTicker, interval }) => {
         <Text>{stockData["exchangeName"]}</Text>
       </CardHeader>
       <CardBody>
+        <Container>
+          <Heading size={"sm"}>EPS Trend</Heading>
+          <Text>
+            Current: {stockData["trend"]["current"]}
+            <br />7 Days Ago: {stockData["trend"]["7daysAgo"]}
+            <br />
+            30 Days Ago: {stockData["trend"]["30daysAgo"]}
+            <br />
+            60 Days Ago: {stockData["trend"]["60daysAgo"]}
+            <br />
+            90 Days Ago: {stockData["trend"]["90daysAgo"]}
+            <br />
+          </Text>
+        </Container>
         <Box w="100%" h="500">
           <MyResponsiveLine data={stockData["prices"]} />
         </Box>
