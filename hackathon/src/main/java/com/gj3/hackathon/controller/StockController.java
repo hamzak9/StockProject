@@ -28,8 +28,6 @@ import org.json.JSONObject;
 
 public class StockController {
 
-    @Value("${YAHOO_FINANCE_API_Key}")
-    private String yahooAPIKey;
 
     @GetMapping("/viewstock/{ticker}")
     public ResponseEntity<?> viewStock(@PathVariable("ticker") String ticker) throws IOException, InterruptedException {
