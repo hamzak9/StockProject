@@ -20,7 +20,6 @@ public class UserService {
 
     @Transactional
     public void updateUserCash(Integer userId, Double newCash) {
-        
         Optional<User> user = repository.findById(userId);
 
         if(user.isPresent()){

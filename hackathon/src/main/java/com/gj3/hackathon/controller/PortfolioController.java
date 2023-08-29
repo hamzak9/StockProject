@@ -26,6 +26,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -55,10 +56,12 @@ public class PortfolioController {
 
         JSONObject information = getStockInfo(ticker);
 
+        double price = information.getDouble("price");
+//        BigDecimal price = information.getBigDecimal("price");
+        double total = price * quantity;
 
-        BigDecimal price = information.getBigDecimal("price");
 
-        BigDecimal total = price.multiply(BigDecimal.valueOf(quantity));
+//        BigDecimal total = price.multiply(BigDecimal.valueOf(quantity));
 
         System.out.println("TOTAL" + total);
 
@@ -71,14 +74,14 @@ public class PortfolioController {
 
 
 
-        if(cash>=total.doubleValue()){
+        if(cash>=total){
 
-            cash = cash- total.doubleValue(); // new balance
+            cash = cash- total; // new balance
 
             userService.updateUserCash(userId,cash);
 
             LocalDateTime date = LocalDateTime.now();
-            Order order = new Order(null,"Buy",ticker,total.doubleValue(),quantity,date);
+            Order order = new Order(null,"Buy",ticker,total,quantity,date);
             orderService.createOrder(order);
 
             if(exists.isPresent()){
@@ -89,7 +92,7 @@ public class PortfolioController {
                 double oldPrice = currentStock.getPrice();
 
                 int newQuantity = oldQuantity + quantity;
-                double newAverage = oldPrice + total.doubleValue();
+                double newAverage = oldPrice + total;
                 currentStock.setPrice(newAverage);
                 currentStock.setQuantity(newQuantity);
                 stockService.updateStock(currentStock);
@@ -101,7 +104,7 @@ public class PortfolioController {
 
                 stock.setTicker(ticker);
                 stock.setQuantity(quantity);
-                stock.setPrice(total.doubleValue());
+                stock.setPrice(total);
                 stockService.updateStock(stock);
 
             }
@@ -117,9 +120,6 @@ public class PortfolioController {
 
 
         }
-
-
-
 
 
 
@@ -139,14 +139,12 @@ public class PortfolioController {
 
 
     }
+    @GetMapping("/getPortfolio")
+    public ResponseEntity<?> getPortfolio(){
 
-    @GetMapping("/getOrderHistory")
-    public ResponseEntity<?> orderHistory(){
+        List<Stock> portfolio = stockService.getAllStocks();
 
-
-
-
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(portfolio,HttpStatus.OK);
 
     }
 
@@ -157,18 +155,12 @@ public class PortfolioController {
         String ticker = json.getString("symbol");
         Integer quantity = json.getInt("shares");
 
-
         JSONObject information = getStockInfo(ticker);
-
-
-        BigDecimal price = information.getBigDecimal("price");
-
-        BigDecimal total = price.multiply(BigDecimal.valueOf(quantity));
+        double price = information.getDouble("price");
+        double total = price * quantity;
 
         Integer userId=1;
-
         Optional<Stock> stock = stockService.findStockByTicker(ticker);
-
 
         if(stock.isPresent()){
             if(stock.get().getQuantity()>=quantity){
@@ -180,7 +172,7 @@ public class PortfolioController {
 
                 System.out.println("PRICEPERSHARE" + pricePerShare);
 
-                double cashFromSale = price.doubleValue() * quantity ; // current stock price * quantity
+                double cashFromSale = price* quantity ; // current stock price * quantity
 
                 System.out.println("CashFromSale" + cashFromSale);
 
@@ -209,7 +201,7 @@ public class PortfolioController {
                 s.setPrice(newTotalCost);
 
                 LocalDateTime date = LocalDateTime.now();
-                Order order = new Order(null,"Sell",ticker,total.doubleValue(),quantity,date);
+                Order order = new Order(null,"Sell",ticker,total,quantity,date);
                 orderService.createOrder(order);
 
 

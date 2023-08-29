@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +27,10 @@ public class StocksService {
     @Transactional
     public void deleteStock(Stock stock){
         repository.deleteStock(stock);
+    }
+
+    public List<Stock> getAllStocks(){
+        return (List<Stock>)repository.findAll();
     }
 
 
