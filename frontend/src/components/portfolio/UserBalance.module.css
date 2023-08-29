@@ -1,0 +1,37 @@
+.balance {
+  font-size: 20px;
+  font-weight: 300;
+  width: auto;
+  height: 15%;
+  display: flex;
+  background-color: rgb(75, 74, 74);
+  color: white;
+  margin: 1%;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.balance div {
+  width: 59%;
+  padding: 1%;
+  height: 15%;
+}
+
+.balance button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: darkgray;
+  color: white;
+  padding: 0.3rem 1rem;
+  margin: 1%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
+.balance button:hover,
+.balance button:active {
+  background-color: black;
+}

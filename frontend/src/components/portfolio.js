@@ -59,14 +59,14 @@ export default function PortfolioPerformance() {
     <Box>
       <Flex>
         <Box p="4">
-          <Text fontSize="5xl">Portfolio Value</Text>
+          <Text fontSize="2xl">Portfolio Value</Text>
         </Box>
         <Spacer />
         <Box p="4">
-          <Text fontSize="5xl">$1000.00</Text>
+          <Text fontSize="2xl">$1000.00</Text>
         </Box>
       </Flex>
-      <Box maxW='100%' h="xl">
+      <Box maxW="100%" h="xl">
         <MyResponsiveLine data={data} />
       </Box>
     </Box>
