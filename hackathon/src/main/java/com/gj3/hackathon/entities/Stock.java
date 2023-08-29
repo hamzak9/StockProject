@@ -3,6 +3,8 @@ package com.gj3.hackathon.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -17,6 +19,29 @@ public class Stock implements Serializable {
     private Double price;
     @Column(name="ticker")
     private String ticker;
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="portfolio_id")
+    private Portfolio portfolio;
+
+    @Column
+    private Integer quantity;
+
+    public Stock(Integer id, Double price, String ticker, Portfolio portfolio, Integer quantity) {
+        this.id = id;
+        this.price = price;
+        this.ticker = ticker;
+        this.portfolio = portfolio;
+        this.quantity = quantity;
+    }
 
     public Stock() {
     }
@@ -50,35 +75,12 @@ public class Stock implements Serializable {
         this.ticker = ticker;
     }
 
-    /*
-    public Stock(int id, double price, String ticker) {
-        this.id = id;
-        this.price = price;
-        this.ticker = ticker;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public Stock() {
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    public String getTicker() {
-        return ticker;
-    }
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
-    }
-     */
-
 
 }

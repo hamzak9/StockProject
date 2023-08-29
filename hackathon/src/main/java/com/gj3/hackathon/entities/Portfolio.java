@@ -4,29 +4,43 @@ package com.gj3.hackathon.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
-//@Entity
-//@Table(name="Portfolio")
+import java.util.List;
+
+@Entity
+@Table(name="Portfolio")
 public class Portfolio implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
     private Integer id;
-    @Column(name="ticker")
-    private String ticker;
 
-    @Column(name="amount")
-    private Integer amount;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "portfolio")
+    private List<Stock> stocks = new ArrayList<>();
 
-    @Column(name="cash")
-    private Double cash;
+    public List<Stock> getStocks() {
+        return stocks;
+    }
 
-    public Portfolio(Integer id, String ticker, Integer amount, Double cash) {
+    public void setStocks(List<Stock> stocks) {
+        this.stocks = stocks;
+    }
+
+    public Portfolio(Integer id, List<Stock> stocks) {
         this.id = id;
-        this.ticker = ticker;
-        this.amount = amount;
-        this.cash = cash;
+        this.stocks = stocks;
+    }
+
+    public Portfolio(Integer id) {
+        this.id = id;
+    }
+    public void addStock(Stock stock){
+        stocks.add(stock);
+    }
+    public void removeStock(Stock stock){
+        stocks.remove(stock);
     }
 
     public Portfolio() {
@@ -40,28 +54,6 @@ public class Portfolio implements Serializable {
         this.id = id;
     }
 
-    public String getTicker() {
-        return ticker;
-    }
-
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
 
 
-    public Double getCash() {
-        return cash;
-    }
-
-    public void setCash(Double cash) {
-        this.cash = cash;
-    }
 }
