@@ -1,6 +1,4 @@
-import { Button } from "@chakra-ui/react";
 import "./App.css";
-import axios from "axios";
 
 import PortfolioPerformance from "./components/portfolio.js";
 
@@ -15,21 +13,12 @@ import BuySellButton from "./components/layout/BuySellButton";
 import CashHistory from "./components/portfolio/CashHistory";
 
 // new branch test
+
+import { StockTabs } from "./components/stockTabs";
+import { Flex } from "@chakra-ui/react";
+import { StockOrderButton } from "./components/stockOrderButton";
+
 function App() {
-  const testBuyStock = async () => {
-    try {
-      // const url = http://localhost:8080/api/v1/stock/buy?symbol=AMZN&shares=1;
-      const data = {
-        symbol: "AMZN",
-        shares: 1,
-      };
-      const url = "http://localhost:8080/api/portfolio/buystock";
-      const response = await axios.post(url, data);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div className="back">
       <Header />
@@ -43,6 +32,20 @@ function App() {
         <OrderHistory /> <CashHistory />
       </div>
       <section id="temp"></section>
+      <div className="App">
+        <PortfolioPerformance />
+        <Flex>
+          <StockOrderButton
+            orderType={"buystock"}
+            operationName={"Buy Stocks"}
+          />
+          <StockOrderButton
+            orderType={"sellstock"}
+            operationName={"Sell Stocks"}
+          />
+        </Flex>
+        <StockTabs />
+      </div>
     </div>
   );
 }
