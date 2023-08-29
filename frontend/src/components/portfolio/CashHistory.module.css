@@ -1,0 +1,50 @@
+.cashorder {
+  background-color: rgb(75, 74, 74);
+  border-radius: 1rem;
+  width: 25%;
+  height: 26rem;
+  padding: 1rem;
+  margin: 1rem;
+  overflow: auto;
+  float: auto;
+}
+.cashorder p {
+  text-align: center;
+  color: white;
+}
+
+.cashorder table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: scroll;
+  text-align: center;
+}
+
+.cashorder th {
+  text-align: center;
+}
+
+.cashorder thead {
+  font-weight: bold;
+  color: #fff;
+  background: darkgray;
+}
+
+.cashorder td,
+.cashorder th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+.cashorder td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.cashorder a {
+  color: darkgray;
+}

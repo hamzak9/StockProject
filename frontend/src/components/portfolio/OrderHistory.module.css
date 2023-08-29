@@ -1,0 +1,49 @@
+.order {
+  background-color: rgb(75, 74, 74);
+  border-radius: 1rem;
+  width: 32%;
+  height: 26rem;
+  padding: 1rem;
+  overflow: auto;
+  float: right;
+}
+.order p {
+  text-align: center;
+  color: white;
+}
+
+.order table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: scroll;
+  text-align: center;
+}
+
+.order th {
+  text-align: center;
+}
+
+.order thead {
+  font-weight: bold;
+  color: #fff;
+  background: darkgray;
+}
+
+.order td,
+.order th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+.order td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.order a {
+  color: darkgray;
+}

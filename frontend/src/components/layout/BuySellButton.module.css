@@ -1,0 +1,20 @@
+.buysell button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: darkgray;
+  color: white;
+  padding: 1rem 1rem;
+  margin: 1%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1rem;
+  font-weight: bold;
+  display: inline;
+  float: right;
+}
+
+.buysell button:hover,
+.buysell button:active {
+  background-color: black;
+}
