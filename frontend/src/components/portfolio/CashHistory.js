@@ -1,38 +1,55 @@
 import classes from "./CashHistory.module.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+// const cashOrders = [
+//   {
+//     amount: 333,
+//     date: new Date("2023-08-25"),
+//     type: "deposit",
+//   },
+//   {
+//     amount: 2222,
+//     date: new Date("2023-08-15"),
+//     type: "withdraw",
+//   },
+//   {
+//     amount: 333,
+//     date: new Date("2023-08-25"),
+//     type: "deposit",
+//   },
+//   {
+//     amount: 2222,
+//     date: new Date("2023-08-15"),
+//     type: "withdraw",
+//   },
+//   {
+//     amount: 333,
+//     date: new Date("2023-08-25"),
+//     type: "deposit",
+//   },
+//   {
+//     amount: 2222,
+//     date: new Date("2023-08-15"),
+//     type: "withdraw",
+//   },
+// ];
 
-const cashOrders = [
-  {
-    amount: 333,
-    date: new Date("2023-08-25"),
-    type: "deposit",
-  },
-  {
-    amount: 2222,
-    date: new Date("2023-08-15"),
-    type: "withdraw",
-  },
-  {
-    amount: 333,
-    date: new Date("2023-08-25"),
-    type: "deposit",
-  },
-  {
-    amount: 2222,
-    date: new Date("2023-08-15"),
-    type: "withdraw",
-  },
-  {
-    amount: 333,
-    date: new Date("2023-08-25"),
-    type: "deposit",
-  },
-  {
-    amount: 2222,
-    date: new Date("2023-08-15"),
-    type: "withdraw",
-  },
-];
 const CashHistory = () => {
+  const [cashHistory, setCashHistory] = useState([]);
+  // ex  {
+  //     amount: 2222,
+  //     date: new Date("2023-08-15"),
+  //     type: "withdraw",
+  //   },
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/all cash deposit,withdraw history")
+      .then((response) => {
+        console.log(response.data);
+        setCashHistory(response.data);
+      });
+  }, []);
+
   return (
     <div className={classes.cashorder}>
       <p>Cash Transacion History</p>
@@ -46,46 +63,13 @@ const CashHistory = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>$333</td>
-              <td>Deposit</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
-            <tr>
-              <td>$222</td>
-              <td>Withdraw</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
-            <tr>
-              <td>$333</td>
-              <td>Deposit</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
-            <tr>
-              <td>$222</td>
-              <td>Withdraw</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
-            <tr>
-              <td>$333</td>
-              <td>Deposit</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
-            <tr>
-              <td>$222</td>
-              <td>Withdraw</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
-            <tr>
-              <td>$333</td>
-              <td>Deposit</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
-            <tr>
-              <td>$222</td>
-              <td>Withdraw</td>
-              <td>2022-05-01T10:44:39.369Z</td>
-            </tr>
+            {cashHistory.map((cash) => (
+              <tr>
+                <td>${cash.amount}</td>
+                <td>{cash.type}</td>
+                <td>{cash.date}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
