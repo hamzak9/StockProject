@@ -23,15 +23,6 @@ function App() {
     <div className="back">
       <Header />
       <UserBalance />
-      <ListStocks />
-      <div>
-        <SearchBox /> <BuySellButton />
-      </div>
-      <ShowStockInfo />
-      <div>
-        <OrderHistory /> <CashHistory />
-      </div>
-      <section id="temp"></section>
       <div className="App">
         <PortfolioPerformance />
         <Flex>
@@ -46,6 +37,15 @@ function App() {
         </Flex>
         <StockTabs />
       </div>
+      <ListStocks />
+      <div>
+        <SearchBox /> <BuySellButton />
+      </div>
+      <ShowStockInfo />
+      <div>
+        <OrderHistory /> <CashHistory />
+      </div>
+      <section id="temp"></section>
     </div>
   );
 }

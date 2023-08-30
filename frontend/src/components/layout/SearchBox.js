@@ -2,14 +2,14 @@ import classes from "./SearchBox.module.css";
 
 const SearchBox = () => {
   return (
-    <div class={classes["has-search"]}>
+    <div className={classes["has-search"]}>
       <input
         type="text"
-        class="form-control"
+        className="form-control"
         placeholder="Search some stocks"
       />
-      <div class="input-group-append">
-        <button class="btn btn-secondary" type="button">
+      <div className="input-group-append">
+        <button className="btn btn-secondary" type="button">
           Search
         </button>
       </div>
