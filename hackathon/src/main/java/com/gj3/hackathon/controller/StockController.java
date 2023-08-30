@@ -49,6 +49,7 @@ public class StockController {
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
         JSONObject jsonObject = new JSONObject(response.body());
+        System.out.println(jsonObject);
 
         String symbol = "Symbol: " + jsonObject.getString("symbol");
         String regularMarketPrice = "Regular Market Price (Current Value): " + jsonObject.getJSONObject("regularMarketPrice").getString("fmt");
