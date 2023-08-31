@@ -18,34 +18,44 @@ import { StockTabs } from "./components/stockTabs";
 import { Flex } from "@chakra-ui/react";
 import { StockOrderButton } from "./components/stockOrderButton";
 
+{
+  /* <div className="App">
+<PortfolioPerformance />
+<Flex>
+  <StockOrderButton
+    orderType={"buystock"}
+    operationName={"Buy Stocks"}
+  />
+  <StockOrderButton
+    orderType={"sellstock"}
+    operationName={"Sell Stocks"}
+  />
+</Flex>
+<StockTabs />
+</div> */
+}
+
+{
+  /* <div className="back">
+<Header />
+<UserBalance />
+<ListStocks />
+<div>
+  <SearchBox /> <BuySellButton />
+</div>
+<ShowStockInfo />
+<div>
+  <OrderHistory /> <CashHistory />
+</div>
+<section id="temp"></section>
+</div> */
+}
+
 function App() {
   return (
     <div className="back">
       <Header />
-      <UserBalance />
-      <div className="App">
-        <PortfolioPerformance />
-        <Flex>
-          <StockOrderButton
-            orderType={"buystock"}
-            operationName={"Buy Stocks"}
-          />
-          <StockOrderButton
-            orderType={"sellstock"}
-            operationName={"Sell Stocks"}
-          />
-        </Flex>
-        <StockTabs />
-      </div>
       <ListStocks />
-      <div>
-        <SearchBox /> <BuySellButton />
-      </div>
-      <ShowStockInfo />
-      <div>
-        <OrderHistory /> <CashHistory />
-      </div>
-      <section id="temp"></section>
     </div>
   );
 }
