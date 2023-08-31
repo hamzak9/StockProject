@@ -1,9 +1,11 @@
 package com.gj3.hackathon.controller;
 
 import com.gj3.hackathon.entities.Stock;
+import com.gj3.hackathon.entities.User;
 import com.gj3.hackathon.services.StocksService;
 import com.gj3.hackathon.services.UserService;
 import io.swagger.models.Response;
+import org.json.HTTP;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,13 +27,40 @@ public class UserController {
     @Autowired
     public StocksService stockService;
 
+
+
+    @GetMapping("/createUser")
+    public ResponseEntity<?> createUser(){
+
+        User u = new User();
+        u.setTotalNet(500);
+        u.setTotalStock(700);
+        u.setId(null);
+        u.setCash(5000.0);
+
+        userService.addUser(u);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
+
     @PostMapping("/depositCash")
     public ResponseEntity<?> depositCash(@RequestBody String payload) throws IOException, InterruptedException {
         JSONObject json = new JSONObject(payload);
+
+
+        System.out.println(json.toString());
+
+
         Integer userId = 1;
 
         Double deposit = json.getDouble("amount");
+        System.out.println("DEPOSIT AMNT " + deposit);
+//
         Double currentCash = userService.getUserCashById(userId);
+
+        System.out.println("CURRENT CASH " + currentCash);
         Double newCash = deposit + currentCash;
 
         userService.updateUserCash(userId, newCash);

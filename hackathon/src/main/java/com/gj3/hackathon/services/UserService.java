@@ -28,4 +28,9 @@ public class UserService {
         }
 
     }
+
+    public void addUser(User u){
+        repository.save(u);
+
+    }
 }

@@ -17,6 +17,35 @@ public class User {
     @Column(name="cash")
     private Double cash;
 
+    @Column(name="totalNet")
+    private Double totalNet;
+
+    public double getTotalNet() {
+        return totalNet;
+    }
+
+    public void setTotalNet(double totalNet) {
+        this.totalNet = totalNet;
+    }
+
+    public double getTotalStock() {
+        return totalStock;
+    }
+
+    public void setTotalStock(double totalStock) {
+        this.totalStock = totalStock;
+    }
+
+    public User(Integer id, Double cash, double totalNet, double totalStock) {
+        this.id = id;
+        this.cash = cash;
+        this.totalNet = totalNet;
+        this.totalStock = totalStock;
+    }
+
+    @Column(name="totalStock")
+    private double totalStock;
+
 
     public Integer getId() {
         return id;

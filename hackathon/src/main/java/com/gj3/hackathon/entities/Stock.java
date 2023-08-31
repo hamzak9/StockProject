@@ -39,18 +39,13 @@ public class Stock implements Serializable {
         this.name = name;
     }
 
-    @ManyToOne
-    @JoinColumn(name="portfolio_id")
-    private Portfolio portfolio;
-
     @Column
     private Integer quantity;
 
-    public Stock(Integer id, Double price, String ticker, Portfolio portfolio, Integer quantity,String name) {
+    public Stock(Integer id, Double price, String ticker, Integer quantity,String name) {
         this.id = id;
         this.price = price;
         this.ticker = ticker;
-        this.portfolio = portfolio;
         this.quantity = quantity;
         this.name=name;
     }

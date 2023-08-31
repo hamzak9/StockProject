@@ -5,7 +5,6 @@ import axios from "axios";
 const ListStocks = () => {
   const [stocks, setStocks] = useState([]);
   // ex {id: 1, price: 10, ticker: AMZN, quantity: 3, portfolio_id: 1}
-
   useEffect(() => {
     axios({
       url: "http://localhost:8080/api/portfolio/getPortfolio",
@@ -13,21 +12,16 @@ const ListStocks = () => {
       return setStocks(response.data);
     });
   }, []);
-
-  console.log(stocks);
-
+  // const [stockPrice, setStockPrice] = useState("");
   const findCurrentPrice = (ticker) => {
-    // const stockInfo = axios
-    //   .get(`http://localhost:8080/api/stock/viewstock/${ticker}`)
-    //   .then((response) => {
-    //     return response.data;
-    //   });
-    // const str = stockInfo[1];
-    // console.log(str);
-    // const startIdx = str.search(/[0-9]/);
-    // const price = str.substring(startIdx, str.length);
-    // parseFloat(price);
-    //parseFloat(price).toFixed(2);
+    // axios({
+    //   url: `http://localhost:8080/api/stock/viewstock/${ticker}`,
+    // }).then((response) => {
+    //   const str = JSON.stringify(response.data[1]);
+    //   const startIdx = str.search(/[0-9]/);
+    //   const price = str.substring(startIdx, str.length);
+    //   return setStockPrice(parseFloat(price).toFixed(2));
+    // });
     return 150;
   };
 
@@ -71,11 +65,9 @@ const ListStocks = () => {
           100
         ).toFixed(2))
     );
-    console.log(losers);
     losers = losers.sort((a, b) => {
       return a.rate - b.rate;
     });
-    console.log(losers);
     return losers;
   };
   return (

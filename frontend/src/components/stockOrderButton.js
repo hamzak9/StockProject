@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 
-export const StockOrderButton = ({ orderType, operationName }) => {
+ export const StockOrderButton = ({ orderType, operationName }) => {
   const orderStock = async (orderInfo) => {
     const url = `http://localhost:8080/api/portfolio/${orderType}`;
     try {
@@ -47,10 +47,10 @@ export const StockOrderButton = ({ orderType, operationName }) => {
   };
 
   return (
-    <Container>
-      <Heading>{operationName}</Heading>
+    <Container bg={"rgb(75,74,74)"}>
+      <Heading color={"white"}>{operationName}</Heading>
       <Formik
-        initialValues={{ symbol: "APPL", shares: 1 }}
+        initialValues={{ symbol: "AAPL", shares: 1 }}
         onSubmit={(values, actions) => {
           const orderInfo = {
             symbol: values.symbol,

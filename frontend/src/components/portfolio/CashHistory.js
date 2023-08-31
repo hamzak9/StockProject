@@ -1,73 +1,45 @@
-import classes from "./CashHistory.module.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
-// const cashOrders = [
-//   {
-//     amount: 333,
-//     date: new Date("2023-08-25"),
-//     type: "deposit",
-//   },
-//   {
-//     amount: 2222,
-//     date: new Date("2023-08-15"),
-//     type: "withdraw",
-//   },
-//   {
-//     amount: 333,
-//     date: new Date("2023-08-25"),
-//     type: "deposit",
-//   },
-//   {
-//     amount: 2222,
-//     date: new Date("2023-08-15"),
-//     type: "withdraw",
-//   },
-//   {
-//     amount: 333,
-//     date: new Date("2023-08-25"),
-//     type: "deposit",
-//   },
-//   {
-//     amount: 2222,
-//     date: new Date("2023-08-15"),
-//     type: "withdraw",
-//   },
-// ];
 
-const CashHistory = () => {
-  const [cashHistory, setCashHistory] = useState([]);
-  // ex  {
-  //     amount: 2222,
-  //     date: new Date("2023-08-15"),
-  //     type: "withdraw",
-  //   },
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import classes from './CashHistory.module.css';
+
+const Portfolio = () => {
+  const [stocks, setStocks] = useState([]);
+
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/all cash deposit,withdraw history")
+    axios.get('http://localhost:8080/api/portfolio/getPortfolio')
       .then((response) => {
-        console.log(response.data);
-        setCashHistory(response.data);
+        setStocks(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching portfolio:', error);
       });
   }, []);
 
   return (
     <div className={classes.cashorder}>
-      <p>Cash Transacion History</p>
+      <p>Portfolio</p>
       <div>
         <table>
           <thead>
             <tr>
               <th>Amount</th>
-              <th>Type</th>
-              <th>Date</th>
+              <th>Ticker</th>
+              <th>Name</th>
+              <th>Quantity</th>
             </tr>
           </thead>
           <tbody>
-            {cashHistory.map((cash) => (
-              <tr>
-                <td>${cash.amount}</td>
-                <td>{cash.type}</td>
-                <td>{cash.date}</td>
+            {stocks.map((stock, index) => (
+              <tr key={index}>
+                <td>
+                  {stock.price ? `$${stock.price.toFixed(2)}` : ''}
+                </td>
+                <td>{stock.ticker}</td>
+                <td>
+                  {stock.name ? stock.name : ''}
+                </td>
+                <td>{stock.quantity ? stock.quantity : ''}</td>
               </tr>
             ))}
           </tbody>
@@ -77,4 +49,4 @@ const CashHistory = () => {
   );
 };
 
-export default CashHistory;
+export default Portfolio;
