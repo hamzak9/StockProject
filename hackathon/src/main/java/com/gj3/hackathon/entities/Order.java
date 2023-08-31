@@ -31,6 +31,10 @@ public class Order {
         this.date = date;
     }
 
+    public Order() { 
+        
+    }
+
     public Integer getId() {
         return id;
     }
