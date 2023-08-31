@@ -28,6 +28,17 @@ public class Stock implements Serializable {
         this.portfolio = portfolio;
     }
 
+    @Column(name="name")
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @ManyToOne
     @JoinColumn(name="portfolio_id")
     private Portfolio portfolio;
@@ -35,12 +46,13 @@ public class Stock implements Serializable {
     @Column
     private Integer quantity;
 
-    public Stock(Integer id, Double price, String ticker, Portfolio portfolio, Integer quantity) {
+    public Stock(Integer id, Double price, String ticker, Portfolio portfolio, Integer quantity,String name) {
         this.id = id;
         this.price = price;
         this.ticker = ticker;
         this.portfolio = portfolio;
         this.quantity = quantity;
+        this.name=name;
     }
 
     public Stock() {

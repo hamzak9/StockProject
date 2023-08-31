@@ -54,7 +54,15 @@ public class PortfolioController {
         Integer quantity = json.getInt("shares");
 
 
-        JSONObject information = getStockInfo(ticker);
+//        JSONObject information = getStockInfo(ticker); UNCOMMENT AFTER TESTING
+
+        JSONObject information = new JSONObject();
+        information.put("symbol", "TSLA");
+        information.put("price", 257.18);
+        information.put("currency", "USD");
+        information.put("symbolName", "Tesla");
+        information.put("marketCap", 81628672);
+
 
         double price = information.getDouble("price");
 //        BigDecimal price = information.getBigDecimal("price");
@@ -95,6 +103,7 @@ public class PortfolioController {
                 double newAverage = oldPrice + total;
                 currentStock.setPrice(newAverage);
                 currentStock.setQuantity(newQuantity);
+                currentStock.setName(information.getString("symbolName"));
                 stockService.updateStock(currentStock);
 
 
@@ -105,6 +114,7 @@ public class PortfolioController {
                 stock.setTicker(ticker);
                 stock.setQuantity(quantity);
                 stock.setPrice(total);
+                stock.setName(information.getString("symbolName"));
                 stockService.updateStock(stock);
 
             }
