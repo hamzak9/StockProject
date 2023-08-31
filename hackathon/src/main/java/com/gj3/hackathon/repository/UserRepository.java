@@ -1,6 +1,5 @@
 package com.gj3.hackathon.repository;
 
-import com.gj3.hackathon.entities.Portfolio;
 import com.gj3.hackathon.entities.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

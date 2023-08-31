@@ -2,7 +2,6 @@ package com.gj3.hackathon.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.gj3.hackathon.entities.Order;
-import com.gj3.hackathon.entities.Portfolio;
 import com.gj3.hackathon.entities.Stock;
 import com.gj3.hackathon.services.OrderService;
 import com.gj3.hackathon.services.StocksService;

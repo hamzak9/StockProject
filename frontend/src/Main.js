@@ -35,7 +35,7 @@ function Main() {
                 <OrderHistory/>
 
         </Flex>      {/* <ListStocks /> */}
-        <SearchBox/>
+        {/* <SearchBox/> */}
       {/* <ShowStockInfo /> */}
         <StockTabs/>
       <div className="App">
