@@ -20,14 +20,6 @@ public class Stock implements Serializable {
     @Column(name="ticker")
     private String ticker;
 
-    public Portfolio getPortfolio() {
-        return portfolio;
-    }
-
-    public void setPortfolio(Portfolio portfolio) {
-        this.portfolio = portfolio;
-    }
-
     @Column(name="name")
     private String name;
 

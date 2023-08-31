@@ -1,6 +1,5 @@
 package com.gj3.hackathon.services;
 
-import com.gj3.hackathon.entities.Portfolio;
 import com.gj3.hackathon.entities.Stock;
 import com.gj3.hackathon.repository.StocksRepository;
 import jakarta.transaction.Transactional;

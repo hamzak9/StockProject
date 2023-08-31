@@ -66,32 +66,32 @@ export const StockCard = ({ stockTicker, interval }) => {
         ];
       };
       try {
-        // const response = await axios.get(
-        //   `http://localhost:8080/api/stock/history/${stockTicker}/${interval}`
-        // );
+        const response = await axios.get(
+          `http://localhost:8080/api/stock/history/${stockTicker}/${interval}`
+        );
 
-        const response = {
-          data: {
-            symbol: stockTicker,
-            regularMarketPrice: 30,
-            exchangeName: "Nasdaq",
-            currency: "CAD",
-            prices: [
-              {
-                date: "01-05-2021",
-                close: 25,
-              },
-              {
-                date: "02-08-2023",
-                close: 75,
-              },
-              {
-                date: "03-08-2025",
-                close: 500,
-              },
-            ],
-          },
-        };
+        // const response = {
+        //   data: {
+        //     symbol: stockTicker,
+        //     regularMarketPrice: 30,
+        //     exchangeName: "Nasdaq",
+        //     currency: "CAD",
+        //     prices: [
+        //       {
+        //         date: "01-05-2021",
+        //         close: 25,
+        //       },
+        //       {
+        //         date: "02-08-2023",
+        //         close: 75,
+        //       },
+        //       {
+        //         date: "03-08-2025",
+        //         close: 500,
+        //       },
+        //     ],
+        //   },
+        // };
 
         const lineChartData = convertStockPricesToLineChart(
           response.data["prices"]
