@@ -11,6 +11,9 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
+      - ./hackathon/sql/portfolio.sql:/docker-entrypoint-initdb.d/portfolio.sql
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
   app:
     depends_on:
       - mysqldb
