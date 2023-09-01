@@ -1,9 +1,13 @@
 .back {
-  background-color: rgb(221, 221, 221);
+  background-color: #d8d0c0;
 }
 
 #temp {
   width: 57%;
   display: flow-root;
   background-color: white;
+}
+
+.page {
+height:100vh;
 }

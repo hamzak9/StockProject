@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Controller
@@ -94,6 +95,9 @@ public class UserController {
         Integer userId = 1;
 
         Double currentCash = userService.getUserCashById(userId);
+
+        DecimalFormat df = new DecimalFormat("#.00");
+        currentCash = Double.parseDouble(df.format(currentCash));
         return new ResponseEntity<>(currentCash, HttpStatus.OK);
     }
 
@@ -101,6 +105,9 @@ public class UserController {
     public ResponseEntity<?> getTotalStocks() {
         List<Stock> portfolio = stockService.getAllStocks();
         double stocksValue = addStocks(portfolio);
+
+        DecimalFormat df = new DecimalFormat("#.00");
+        stocksValue = Double.parseDouble(df.format(stocksValue));
 
         return new ResponseEntity<>(stocksValue, HttpStatus.OK);
     }
@@ -114,6 +121,9 @@ public class UserController {
         Double currentCash = userService.getUserCashById(userId);
 
         double totalNet = stocksValue + currentCash;
+        DecimalFormat df = new DecimalFormat("#.00");
+        totalNet = Double.parseDouble(df.format(totalNet));
+
         return new ResponseEntity<>(totalNet, HttpStatus.OK);
     }
 
@@ -121,8 +131,7 @@ public class UserController {
         double stocksValue = 0.0;
         for (Stock stock : portfolio) {
             Double currentPrice = stock.getPrice();
-            Integer currentQuantity = stock.getQuantity();
-            stocksValue += (currentPrice * currentQuantity);
+            stocksValue += (currentPrice);
         }
         return stocksValue;
     }

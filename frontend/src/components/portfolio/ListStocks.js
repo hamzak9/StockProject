@@ -14,6 +14,9 @@ const ListStocks = () => {
   }, []);
   // const [stockPrice, setStockPrice] = useState("");
   const findCurrentPrice = (ticker) => {
+
+
+    
     // axios({
     //   url: `http://localhost:8080/api/stock/viewstock/${ticker}`,
     // }).then((response) => {
@@ -22,7 +25,7 @@ const ListStocks = () => {
     //   const price = str.substring(startIdx, str.length);
     //   return setStockPrice(parseFloat(price).toFixed(2));
     // });
-    return 150;
+    return 120;
   };
 
   const gainerStocks = () => {
@@ -82,7 +85,6 @@ const ListStocks = () => {
                 <th>Ticker</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Total</th>
                 <th>Change %</th>
               </tr>
             </thead>
@@ -96,7 +98,6 @@ const ListStocks = () => {
                   <td>{stock.ticker}</td>
                   <td>${stock.price}</td>
                   <td>{stock.quantity}</td>
-                  <td>${stock.total}</td>
                   <td>{stock.rate}%</td>
                 </tr>
               ))}
@@ -111,7 +112,6 @@ const ListStocks = () => {
                 <th>Ticker</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Total</th>
                 <th>Change %</th>
               </tr>
             </thead>
@@ -126,7 +126,6 @@ const ListStocks = () => {
                   <td>{stock.ticker}</td>
                   <td>${stock.price}</td>
                   <td>{stock.quantity}</td>
-                  <td>${stock.total}</td>
                   <td>{stock.rate}%</td>
                 </tr>
               ))}

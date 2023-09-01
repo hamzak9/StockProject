@@ -9,12 +9,16 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
+import classes from './stockOrderButton.module.css';
 
  export const StockOrderButton = ({ orderType, operationName }) => {
   const orderStock = async (orderInfo) => {
     const url = `http://localhost:8080/api/portfolio/${orderType}`;
     try {
       const response = await axios.post(url, orderInfo);
+      // if(response.status === 200){
+      //   alert("Transaction complete");
+      // }
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -47,54 +51,75 @@ import { Field, Form, Formik } from "formik";
   };
 
   return (
-    <Container bg={"rgb(75,74,74)"}>
-      <Heading color={"white"}>{operationName}</Heading>
-      <Formik
-        initialValues={{ symbol: "AAPL", shares: 1 }}
-        onSubmit={(values, actions) => {
-          const orderInfo = {
-            symbol: values.symbol,
-            shares: values.shares,
-          };
-          orderStock(orderInfo);
-          actions.setSubmitting(false);
-        }}
-      >
-        {(props) => (
-          <Form>
-            <Field name="symbol" validate={validateStockTicker}>
-              {({ field, form }) => (
-                <FormControl
-                  isInvalid={form.errors.symbol && form.touched.symbol}
-                >
-                  <FormLabel>Stock Ticker</FormLabel>
-                  <Input {...field} placeholder="symbol" />
-                  <FormErrorMessage>{form.errors.symbol}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-            <Field name="shares" validate={validateSharesAmt}>
-              {({ field, form }) => (
-                <FormControl
-                  isInvalid={form.errors.shares && form.touched.shares}
-                >
-                  <FormLabel>Amount</FormLabel>
-                  <Input {...field} placeholder="shares" />
-                  <FormErrorMessage>{form.errors.shares}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-            <Button
-              mt={4}
-              colorScheme="blue"
-              isLoading={props.isSubmitting}
+    <div className={classes.cashorder}>
+    <p>{operationName}</p>
+    <Formik
+      initialValues={{ symbol: "AAPL", shares: 1 }}
+      onSubmit={(values, actions) => {
+        const orderInfo = {
+          symbol: values.symbol,
+          shares: values.shares,
+        };
+        orderStock(orderInfo);
+        actions.setSubmitting(false);
+      }}
+    >
+      {(props) => (
+        <Form>
+          <section className={classes.balance}>
+          <div className="input-row">
+            
+            <div className="input-field">
+
+              <Field name="symbol" validate={validateStockTicker}>
+                {({ field, form }) => (
+                  <div>
+                    <label>Stock Ticker</label>
+                    <input {...field} placeholder="symbol" />
+                    {form.errors.symbol && form.touched.symbol && (
+                      <div className="error">{form.errors.symbol}</div>
+                    )}
+                  </div>
+                )}
+              </Field>
+              
+            </div>
+            
+            <div className="input-field">
+              <Field name="shares" validate={validateSharesAmt}>
+                {({ field, form }) => (
+                  <div>
+                    <label>Amount</label>
+                    <input {...field} placeholder="shares" />
+                    {form.errors.shares && form.touched.shares && (
+                      <div className="error">{form.errors.shares}</div>
+                    )}
+                  </div>
+                )}
+              </Field>
+              
+            </div>
+          </div>
+          
+          <div className="submit-button">
+            <button
               type="submit"
+              className="btn-submit"
+              disabled={props.isSubmitting}
             >
               Submit
-            </Button>
-          </Form>
-        )}
-      </Formik>
-    </Container>
+            </button>
+            
+          </div>
+
+          </section>
+
+        </Form>
+        
+      )}
+      
+    </Formik>
+  </div>
+  
   );
 };

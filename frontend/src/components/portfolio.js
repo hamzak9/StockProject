@@ -14,27 +14,27 @@ export default function PortfolioPerformance() {
       data: [
         {
           x: "01-01-2021",
-          y: 147,
+          y: 25000,
         },
         {
           x: "02-01-2021",
-          y: 75,
+          y: 32000,
         },
         {
           x: "03-01-2021",
-          y: 25,
+          y: 55000,
         },
         {
           x: "04-01-2021",
-          y: 71,
+          y: 51000,
         },
         {
           x: "05-01-2021",
-          y: 164,
+          y: 59000,
         },
         {
           x: "06-01-2021",
-          y: 272,
+          y: 63000,
         },
       ],
     },
@@ -62,9 +62,9 @@ export default function PortfolioPerformance() {
           <Text fontSize="2xl">Portfolio Value</Text>
         </Box>
         <Spacer />
-        <Box p="4">
-          <Text fontSize="2xl">$1000.00</Text>
-        </Box>
+       <Box p="4">
+          {/* <Text fontSize="2xl">$1000.00</Text> */}
+        </Box> 
       </Flex>
       <Box maxW="100%" h="xl">
         <MyResponsiveLine data={data} />

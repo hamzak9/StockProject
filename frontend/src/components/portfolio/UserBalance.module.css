@@ -4,7 +4,7 @@
   width: auto;
   height: 15%;
   display: flex;
-  background-color: rgb(75, 74, 74);
+  background-color: #2b453c;
   color: white;
   margin: 1%;
   text-align: center;
@@ -25,7 +25,7 @@
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color: darkgray;
+  background-color: rgba(40, 252, 13, 0.363);
   color: white;
   padding: 0.3rem 1rem;
   margin: 1%;
@@ -37,5 +37,5 @@
 
 .balance button:hover,
 .balance button:active {
-  background-color: black;
+  background-color: rgb(87, 168, 40);
 }

@@ -23,6 +23,7 @@ import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +54,16 @@ public class PortfolioController {
         Integer quantity = json.getInt("shares");
 
 
-//        JSONObject information = getStockInfo(ticker); UNCOMMENT AFTER TESTING
+        JSONObject information = getStockInfo(ticker);
 
-        JSONObject information = new JSONObject();
-        information.put("symbol", "TSLA");
-        information.put("price", 257.18);
-        information.put("currency", "USD");
-        information.put("symbolName", "Tesla");
-        information.put("marketCap", 81628672);
+        System.out.println(information.toString());
+
+//        JSONObject information = new JSONObject();
+//        information.put("symbol", "TSLA");
+//        information.put("price", 257.18);
+//        information.put("currency", "USD");
+//        information.put("symbolName", "Tesla");
+//        information.put("marketCap", 81628672);
 
 
         double price = information.getDouble("price");
@@ -88,6 +91,11 @@ public class PortfolioController {
             userService.updateUserCash(userId,cash);
 
             LocalDateTime date = LocalDateTime.now();
+
+            DecimalFormat df = new DecimalFormat("#.00");
+            total = Double.parseDouble(df.format(total));
+
+
             Order order = new Order(null,"Buy",ticker,total,quantity,date);
             orderService.createOrder(order);
 
@@ -138,7 +146,7 @@ public class PortfolioController {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://yh-finance-complete.p.rapidapi.com/yhprice?ticker=" + ticker))
-                .header("X-RapidAPI-Key", "f98ff6c085msh01b469893d8b771p15d458jsn6fe7ddaba497")
+                .header("X-RapidAPI-Key", "7526cfbca2mshde8d0b3d24fa0a9p1a5783jsncbcd895fa9b1")
                 .header("X-RapidAPI-Host", "yh-finance-complete.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
@@ -210,6 +218,11 @@ public class PortfolioController {
                 s.setPrice(newTotalCost);
 
                 LocalDateTime date = LocalDateTime.now();
+
+                DecimalFormat df = new DecimalFormat("#.00");
+                total = Double.parseDouble(df.format(total));
+
+
                 Order order = new Order(null,"Sell",ticker,total,quantity,date);
                 orderService.createOrder(order);
 

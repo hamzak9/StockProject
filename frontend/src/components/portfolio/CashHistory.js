@@ -23,7 +23,7 @@ const Portfolio = () => {
         <table>
           <thead>
             <tr>
-              <th>Amount</th>
+              <th>Total</th>
               <th>Ticker</th>
               <th>Name</th>
               <th>Quantity</th>

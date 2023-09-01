@@ -12,15 +12,19 @@ import { Flex } from "@chakra-ui/react";
 import { StockOrderButton } from './components/stockOrderButton';
 import classes from './Main.module.css';
 import { StockTabs } from './components/stockTabs';
-
+import {Link } from "react-router-dom";
 
 function Main() {
   return (
     <div className="back">
       <Header />
+      <Link to="/analytics">
+          <button>Analytics</button>
+        </Link>
       <UserBalance />
       {/* <ListStocks/> */}
       <Flex>
+     
       <CashHistory/>
             <div id='cashorder'></div>
           <StockOrderButton

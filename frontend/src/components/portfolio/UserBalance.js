@@ -66,7 +66,7 @@ const UserBalance = () => {
   return (
     <section className={classes.balance}>
       <div>UserName
-        <section>John Doe</section>
+        <section>John doe</section>
       </div>
 
       <div>
@@ -77,9 +77,11 @@ const UserBalance = () => {
         <section>{totalRateOfReturn}%</section>
       </div>
       <div>
-        Current total net:
-        <section> ${+totalStockAmount + +cashBalance}</section>
-      </div>
+  Current total net:
+  <section> {(+totalStockAmount + +cashBalance).toFixed(2)}</section>
+</div>
+
+
       <form>
         <input type="number" step="any"
  onChange={cashNumHandler} />

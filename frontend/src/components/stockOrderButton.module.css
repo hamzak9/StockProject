@@ -1,0 +1,98 @@
+.cashorder {
+  background-color: #2b453c;
+  border-radius: 1rem;
+  width: 25%;
+  height: 26rem;
+  padding: 1rem;
+  margin: 1rem;
+  overflow: auto;
+  float: auto;
+  color: white; /* Set text color to white */
+}
+
+.cashorder p {
+  text-align: center;
+  color: white; /* Set text color to white */
+}
+
+.cashorder table {
+  border: 1px #a39485 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: scroll;
+  text-align: center;
+}
+
+.cashorder th {
+  text-align: center;
+}
+
+.cashorder thead {
+  font-weight: bold;
+  color: #fff;
+  background: darkgray;
+}
+
+.cashorder td,
+.cashorder th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+}
+
+.cashorder td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.cashorder a {
+  color: darkgray;
+}
+
+/* Style the text within input fields to be a different color */
+.cashorder input {
+  color: black; /* Set the text color within input fields to black */
+}
+.balance {
+  font-size: 20px;
+  font-weight: 300;
+  width: auto;
+  height: 15%;
+  display: flex;
+  background-color: #2b453c;
+  color: white;
+  margin: 1%;
+  text-align: center;
+  border-radius: 1rem;
+}
+.balance input {
+  margin: 1rem;
+  border-radius: 0.5rem;
+  color: black;
+}
+.balance div {
+  width: 59%;
+  padding: 1%;
+  height: 15%;
+}
+
+.balance button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: darkgray;
+  color: white;
+  padding: 0.3rem 1rem;
+  margin: 1%;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
+.balance button:hover,
+.balance button:active {
+  background-color: black;
+}

@@ -18,7 +18,7 @@ const OrderHistory = () => {
   }, []);
 
   return (
-    <div className={classes.order}>
+    <div className={classes.cashorder}>
       <p>Stock Order History</p>
       <div>
         <table>

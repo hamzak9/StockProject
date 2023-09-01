@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MyResponsiveLine } from "./linechart";
+import classes from './stockCard.module.css';
 
 export const StockCard = ({ stockTicker, interval }) => {
   const [stockData, setStockData] = useState({
@@ -118,6 +119,7 @@ export const StockCard = ({ stockTicker, interval }) => {
   }, [stockTicker, interval]);
 
   return (
+    <div className={classes.cashorder}>
     <Card size={"xl"}>
       <CardHeader>
         <Heading size="md">{stockData["symbol"]}</Heading>
@@ -128,14 +130,35 @@ export const StockCard = ({ stockTicker, interval }) => {
         <Container>
           <Heading size={"sm"}>EPS Trend</Heading>
           <Text>
-            Current: {stockData["trend"]["current"]}
-            <br />7 Days Ago: {stockData["trend"]["7daysAgo"]}
+            {stockData["trend"] && stockData["trend"]["current"] ? (
+              `Current: ${stockData["trend"]["current"]}`
+            ) : (
+              "Current EPS data not available"
+            )}
             <br />
-            30 Days Ago: {stockData["trend"]["30daysAgo"]}
+            {stockData["trend"] && stockData["trend"]["7daysAgo"] ? (
+              `7 Days Ago: ${stockData["trend"]["7daysAgo"]}`
+            ) : (
+              "7 Days Ago EPS data not available"
+            )}
             <br />
-            60 Days Ago: {stockData["trend"]["60daysAgo"]}
+            {stockData["trend"] && stockData["trend"]["30daysAgo"] ? (
+              `30 Days Ago: ${stockData["trend"]["30daysAgo"]}`
+            ) : (
+              "30 Days Ago EPS data not available"
+            )}
             <br />
-            90 Days Ago: {stockData["trend"]["90daysAgo"]}
+            {stockData["trend"] && stockData["trend"]["60daysAgo"] ? (
+              `60 Days Ago: ${stockData["trend"]["60daysAgo"]}`
+            ) : (
+              "60 Days Ago EPS data not available"
+            )}
+            <br />
+            {stockData["trend"] && stockData["trend"]["90daysAgo"] ? (
+              `90 Days Ago: ${stockData["trend"]["90daysAgo"]}`
+            ) : (
+              "90 Days Ago EPS data not available"
+            )}
             <br />
           </Text>
         </Container>
@@ -144,5 +167,6 @@ export const StockCard = ({ stockTicker, interval }) => {
         </Box>
       </CardBody>
     </Card>
+    </div>
   );
 };
